@@ -1,11 +1,31 @@
+/* У нормалізаторі modern-normalize за умовчанням задано глобальний border-box та margin 0 для body. 
+Якщо його підключено, то у своїх стилях box-sizing можна не вказувати. */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
 body {
     color: #434455;
     background-color: #FFFFFF;
+    margin: 0;
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.32px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #2E2F42;
+    margin: 0;
+}
+
+p {
+    margin: 0;
 }
 
 a {
@@ -15,23 +35,73 @@ a {
 
 ul, ol {
     list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-}
-
-h1, h2, h3, h4, h5, h6, p {
-    margin: 0px;
-    color: #2E2F42;
-
+    margin: 0;
+	padding: 0;
 }
 
 img {
     display: block;
+    max-width: 100%;
 }
 
+.visually-hidden {
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    margin: -1px;
+}
+
+/* Розташування зображення в контейнері фіксованого розміру
+
+.thumb {
+  height: 400px;
+  width: 300px;
+}
+
+.thumb img {
+    height: 100%;
+    width: 100%;
+	object-fit: cover;
+} */
+
+.page-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
+}
+
+.section-container { 
+max-width: 1158px;
+padding-left: 15px; 
+padding-right: 15px; 
+margin-left: auto;
+margin-right: auto;
+}
+
+/* NAVIGATION */
+
 .nav {
+    display: flex;
     border-bottom: 1px solid #E7E9FC;
 }
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+/* LOGO */
 
 .logo-link {
     color: #2E2F42;
@@ -43,35 +113,59 @@ img {
     text-transform: uppercase;
 }
 
+.nav .logo-link {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin-right: 76px;
+}
+
 .logo-accent {
     color: #4D5AE5;
 }
 
-.nav-menu-link {
+/* MENU & CONTACTS */
+
+.menu.nav-list {
+    flex-grow: 1;
+}
+
+.nav-list-link {
+    padding-top: 24px;
+    padding-bottom: 24px;
+}
+
+.menu .nav-list-link {
     color: #2E2F42;
     font-weight: 500;
 }
 
-.nav-contacts-link {
+.contacts .nav-list-link {
     color: #434455;
 }
 
-.nav-menu-link:hover,
-.nav-menu-link:focus,
-.nav-contacts-link:hover,
-.nav-contacts-link:focus {
+.nav-list-link:hover,
+.nav-list-link:focus {
     color: #404BBF;
 }
 
-.hero, .footer {
+/* HERO */
+
+.section.hero {
     background-color: #2E2F42;
+    padding: 0;
+}
+.hero .section-container {
+    padding-top: 188px;
+    padding-bottom: 188px;
+    text-align: center;
 }
 
 .hero-title {
+    margin-bottom: 48px;
     color: #FFFFFF;
-    font-weight: 700;
+    text-align: center;
     font-size: 56px;
-    line-height: 1.07;
+    line-height: 1.0714;
     letter-spacing: 0.32px;
 }
 
@@ -82,52 +176,108 @@ img {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
-    letter-spacing: 0.64px;
+    letter-spacing: 0.6px;
     border: none;
     border-radius: 4px;
+    cursor: pointer;
 }
 
 .hero-button:hover {
     background-color: #404BBF;
 }
 
+/* SECTION */
+
+.section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+
+.list {
+    display: flex;
+    gap: 48px 24px;
+}
+
+.list-item {
+    flex-basis: calc((100% - 72px) / 4);
+}
+
+.card {
+    padding: 32px 16px;
+}
+
 .section-title {
-    font-weight: 700;
+    margin-bottom: 72px;
+    text-align: center;
     font-size: 36px;
-    line-height: 1.11;
+    line-height: 1.111;
     letter-spacing: 0.32px;
 }
 
 .section-subtitle {
+    margin-bottom: 8px;
     font-weight: 500;
     font-size: 20px;
     line-height: 1.2;
     letter-spacing: 0.32px;
 }
 
+/* FEATURES */
+
+.features .section-title {
+    display: none;
+}
+
+/* TEAM */
+
 .section.team {
     background-color: #F4F4FD;
 }
 
-.team-item {
+.team .list-item {
     background-color: #FFFFFF;
     border-radius: 0 0 4px 4px;
     box-shadow: 0 1px 6px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16), 0 2px 1px rgba(46, 47, 66, 0.08);
 }
 
-.card-description {
+.team .card {
+    text-align: center;
+}
+
+/* PORTFOLIO */
+
+.portfolio .list {
+    flex-wrap: wrap;
+}
+
+.portfolio .list-item {
+    flex-basis: calc((100% - 48px) / 3)
+}
+
+.portfolio .list-item:hover {
+    box-shadow: 0 1px 6px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16), 0 2px 1px rgba(46, 47, 66, 0.08);
+}
+
+.portfolio .card {
     border: 1px solid #E7E9FC;
     border-top: none;
 }
 
-.portfolio-card:hover {
-    box-shadow: 0 1px 6px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16), 0 2px 1px rgba(46, 47, 66, 0.08);
+/* Footer */
+
+.footer {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #2E2F42;
 }
 
 .footer-text {
     color: #F4F4FD;
+    width: 264px;
 }
 
-.footer > .logo-link {
+.footer .logo-link {
+    display: block;
+    margin-bottom: 16px;
     color: #F4F4FD;
 }
