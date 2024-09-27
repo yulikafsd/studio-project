@@ -1,6 +1,21 @@
 /* У нормалізаторі modern-normalize за умовчанням задано глобальний border-box та margin 0 для body. 
 Якщо його підключено, то у своїх стилях box-sizing можна не вказувати. */
 
+
+/* Розташування зображення в контейнері фіксованого розміру
+
+.thumb {
+    height: 400px;
+    width: 300px;
+}
+
+.thumb img {
+    height: 100%;
+    width: 100%;
+	object-fit: cover;
+} */
+
+
 *,
 *::before,
 *::after {
@@ -56,19 +71,6 @@ img {
     clip-path: inset(50%);
     margin: -1px;
 }
-
-/* Розташування зображення в контейнері фіксованого розміру
-
-.thumb {
-  height: 400px;
-  width: 300px;
-}
-
-.thumb img {
-    height: 100%;
-    width: 100%;
-	object-fit: cover;
-} */
 
 .page-container{
     min-height: 100vh;
@@ -151,8 +153,12 @@ margin-right: auto;
 /* HERO */
 
 .section.hero {
-    background-color: #2E2F42;
     padding: 0;
+    background-color: #2E2F42;
+    background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/webstudio-hero.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 .hero .section-container {
     padding-top: 188px;
@@ -170,13 +176,14 @@ margin-right: auto;
 }
 
 .hero-button {
-    color: #FFFFFF;
-    background-color: #4D5AE5;
-    padding: 16px 32px;
+    width: 170px;
+    padding: 16px 0;
     font-weight: 500;
     font-size: 16px;
     line-height: 1.5;
     letter-spacing: 0.6px;
+    color: #FFFFFF;
+    background-color: #4D5AE5;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -228,6 +235,18 @@ margin-right: auto;
     display: none;
 }
 
+.features .thumb {
+    max-width: 264px;
+    height: 112px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+    background-color: #F4F4FD;
+    border: 1px solid #8E8F99;
+    border-radius: 4px;
+}
+
 /* TEAM */
 
 .section.team {
@@ -244,6 +263,31 @@ margin-right: auto;
     text-align: center;
 }
 
+.team .section-text {
+    margin-bottom: 8px;
+}
+
+.team .list {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.social-list-item {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #4D5AE5;
+    border-radius: 50%;
+}
+
+.social-list-item:hover {
+    background-color: #404BBF;
+}
+
 /* PORTFOLIO */
 
 .portfolio .list {
@@ -256,6 +300,7 @@ margin-right: auto;
 
 .portfolio .list-item:hover {
     box-shadow: 0 1px 6px rgba(46, 47, 66, 0.08), 0 1px 1px rgba(46, 47, 66, 0.16), 0 2px 1px rgba(46, 47, 66, 0.08);
+    cursor: pointer;
 }
 
 .portfolio .card {
@@ -263,12 +308,18 @@ margin-right: auto;
     border-top: none;
 }
 
+
 /* Footer */
 
 .footer {
     padding-top: 100px;
     padding-bottom: 100px;
     background-color: #2E2F42;
+}
+
+.footer .section-container {
+    display: flex;
+    gap: 120px;
 }
 
 .footer-text {
@@ -280,4 +331,14 @@ margin-right: auto;
     display: block;
     margin-bottom: 16px;
     color: #F4F4FD;
+}
+
+.footer .social-title {
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.footer .social-list-item:hover {
+    background-color: #31D0AA;
 }
